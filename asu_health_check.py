@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from datetime import date
-
+import os
 
 
 
@@ -26,7 +26,6 @@ from datetime import date
 
 username = "" # Enter your ASURITE username between the " ", example - username = "bobjones1"
 password = "" # Enter your ASURITE password between the " ", example - password = "password123"
-driverPath = "" # Input path to where the python/chromedriver file are on your computer between the " ". Mac example: /Users/(username)/Desktop/chromedriver. Windows example: C:/Users/(username)/Downloads/chromedriver_win32/chromedriver.exe
 setTime = 4 # Delay between loading webpages, increase this if you're getting errors, your internet is likely too slow
 
 ######################################################################
@@ -46,7 +45,7 @@ setTime = 4 # Delay between loading webpages, increase this if you're getting er
 
 
 # Beginning of program
-
+driverPath = os.path.join(os.getcwd(), "chromedriver")
 driver = webdriver.Chrome(driverPath) # finds chromedriver through path user entered
 driver.get("https://www.asu.edu/healthcheck/preferences.html") # driver.go, simply goes to asu webpage
 
