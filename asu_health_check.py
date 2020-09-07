@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 from datetime import date
 import os
+import platform
 
 
 
@@ -45,7 +46,10 @@ setTime = 4 # Delay between loading webpages, increase this if you're getting er
 
 
 # Beginning of program
-driverPath = os.path.join(os.getcwd(), "chromedriver")
+if os.platform == "Windows":
+	driverPath = os.path.join(os.getcwd(), "chromedriver.exe")
+else:
+	driverPath = os.path.join(os.getcwd(), "chromedriver")
 driver = webdriver.Chrome(driverPath) # finds chromedriver through path user entered
 driver.get("https://www.asu.edu/healthcheck/preferences.html") # driver.go, simply goes to asu webpage
 
