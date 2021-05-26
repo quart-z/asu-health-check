@@ -27,7 +27,7 @@ from datetime import date
 username = "" # Enter your ASURITE username between the " ", example - username = "bobjones1"
 password = "" # Enter your ASURITE password between the " ", example - password = "password123"
 driverPath = "" # Input path to where the python/chromedriver file are on your computer between the " ". Mac example: /Users/(username)/Desktop/chromedriver. Windows example: C:/Users/(username)/Downloads/chromedriver_win32/chromedriver.exe
-setTime = 4 # Delay between loading webpages, increase this if you're getting errors, your internet is likely too slow
+setTime = 10 # Delay between loading webpages, increase this if you're getting errors, your internet is likely too slow
 
 ######################################################################
 ########### ENTER FIELDS ABOVE IN ORDER FOR PROGRAM TO RUN ###########
@@ -58,6 +58,10 @@ usernameInput.send_keys(username) # finds username field, inputs username into u
 passwordInput.send_keys(password) # finds password field, inputs password into password field
 
 passwordInput.send_keys(Keys.RETURN) # enters password into field
+
+frame = driver.find_element_by_xpath('//iframe[@id="duo_iframe"]')
+driver.switch_to.frame(frame)
+driver.find_element_by_id("auth_methods").find_element_by_css_selector("button").click()
 
 print("Username and password entered successfully...") # print for user
 time.sleep(setTime)
